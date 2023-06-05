@@ -31,11 +31,7 @@ const Index = ({ userDetails }) => {
       "Content-Type": "application/json",
     };
     await axios
-      .post(
-        "https://blogger-medium-api.vercel.app/api/stories",
-        body,
-        confHeader
-      )
+      .post("http://localhost:8000/api/stories", body, confHeader)
       .then((res) => {
         if (res.data.status) {
           console.log(res.data.message);

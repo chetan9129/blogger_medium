@@ -32,9 +32,7 @@ function App() {
         );
         async function getUser() {
           await axios
-            .get(
-              `https://blogger-medium-api.vercel.app/api/user/${authUser?.email}`
-            )
+            .get(`http://localhost:8000/api/user/${authUser?.email}`)
             .then(async (res) => {
               console.log(res.data);
               if (res.data.status) {

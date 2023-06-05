@@ -17,7 +17,7 @@ const LandingMainPage = ({ userDetails }) => {
   useEffect(() => {
     async function getStories() {
       await axios
-        .get("https://blogger-medium-api.vercel.app/api/stories")
+        .get("http://localhost:8000/api/stories")
         .then((res) => {
           // console.log(res.data.data);
           setLoading(false);

@@ -25,7 +25,7 @@ const Index = ({ userDetails }) => {
     if (id) {
       setLoading(true);
       axios
-        .get(`https://blogger-medium-api.vercel.app/api/stories/${id}`)
+        .get(`http://localhost:8000/api/stories/${id}`)
         .then((res) => {
           console.log(res.data.data);
           setSingleB(res.data.data);

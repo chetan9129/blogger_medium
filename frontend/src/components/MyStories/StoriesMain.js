@@ -13,9 +13,7 @@ const StoriesMain = ({ userDetails }) => {
       async function getStories() {
         setLoading(true);
         await axios
-          .get(
-            `https://blogger-medium-api.vercel.app/api/stories/user/${userDetails?._id}`
-          )
+          .get(`http://localhost:8000/api/stories/user/${userDetails?._id}`)
           .then((res) => {
             console.log(res.data);
             setStories(res.data.data.reverse());
