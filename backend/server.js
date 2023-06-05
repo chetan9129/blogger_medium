@@ -7,7 +7,7 @@ const path = require("path");
 const app = express();
 const router = require("./routers");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 app.use(cors());
 
 const db = require("./db");
@@ -27,14 +27,6 @@ app.use((req, res, next) => {
 app.use("/api", router);
 app.use("/uploads", express.static(path.join(__dirname, "/../uploads")));
 app.use(express.static(path.join(__dirname, "/../frontend/build")));
-
-app.get("*", (req, res) => {
-  try {
-    res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
-  } catch (e) {
-    res.send("Welcome to Medium Clone 3.0");
-  }
-});
 
 app.listen(PORT, () => {
   console.log(`Medium Clone 3.0 API is running on PORT No- ${PORT}`);
