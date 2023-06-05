@@ -54,11 +54,7 @@ function App() {
                   photoURL: authUser?.photoURL,
                 };
                 await axios
-                  .post(
-                    "https://blogger-medium-api.vercel.app/api/user",
-                    body,
-                    confHeader
-                  )
+                  .post("http://localhost:8000/api/user", body, confHeader)
                   .then((res) => {
                     console.log(res.data);
                     setUserDetails(res.data?.data);

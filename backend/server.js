@@ -8,13 +8,13 @@ const app = express();
 const router = require("./routers");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8000;
+app.use(cors());
 
 const db = require("./db");
 db.connect();
 
 app.use(bodyParser.json({ limit: "500mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "500mb" }));
-app.use(cors());
 
 app.use(express.json());
 app.use((req, res, next) => {
