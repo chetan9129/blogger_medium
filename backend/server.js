@@ -23,8 +23,13 @@ app.use((req, res, next) => {
   res.header("Access-Control-Request-Method", "*");
   next();
 });
+const usersRoute = require("./routers/User");
+const storiesRoute = require("./routers/Stories");
+console.log(process.env.MONGO_URL);
 
-app.use("/api", router);
+app.use("/api/user", usersRoute);
+app.use("/api/stories", storiesRoute);
+
 app.use("/uploads", express.static(path.join(__dirname, "/../uploads")));
 app.use(express.static(path.join(__dirname, "/../frontend/build")));
 
