@@ -83,4 +83,3 @@ const index = () => {
 };
 
 export default index;
-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;
