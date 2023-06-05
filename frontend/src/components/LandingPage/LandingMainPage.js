@@ -17,7 +17,7 @@ const LandingMainPage = ({ userDetails }) => {
   useEffect(() => {
     async function getStories() {
       await axios
-        .get("http://localhost:8000/api/stories")
+        .get("https://blogger-medium-api.vercel.app/api/stories")
         .then((res) => {
           // console.log(res.data.data);
           setLoading(false);
@@ -34,7 +34,7 @@ const LandingMainPage = ({ userDetails }) => {
   useEffect(() => {
     async function getUsers() {
       await axios
-        .get("http://localhost:8000/api/user")
+        .get("https://blogger-medium-api.vercel.app/api/user")
         .then((res) => {
           if (res.data.status) {
             let _users = res.data?.data?.filter(

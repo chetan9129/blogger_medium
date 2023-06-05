@@ -2,7 +2,7 @@ const express = require("express");
 const { default: mongoose } = require("mongoose");
 const router = express.Router();
 const userDB = require("../models/User");
-const storyDB = require("../models/Stories")
+const storyDB = require("../models/Stories");
 
 router.post("/", async (req, res) => {
   try {
@@ -39,7 +39,8 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     await userDB
-      .find().sort({created_at: -1})
+      .find()
+      .sort({ created_at: -1 })
       .then((doc) => {
         res.status(200).send({
           status: true,
@@ -92,51 +93,60 @@ router.get("/:uid", async (req, res) => {
   }
 });
 
-router.post('/list/:id', async(req, res) => {
-  console.log(req.body.userid, req.params.id)
-  await userDB.findOneAndUpdate({_id: req.body.userid}, {$addToSet: {
-    reading_list: req.params.id
-  }}).then((data) => {
-    res.status(201).send({
-      status: true,
-      message: 'Stories added to the reading list'
+router.post("/list/:id", async (req, res) => {
+  console.log(req.body.userid, req.params.id);
+  await userDB
+    .findOneAndUpdate(
+      { _id: req.body.userid },
+      {
+        $addToSet: {
+          reading_list: req.params.id,
+        },
+      }
+    )
+    .then((data) => {
+      res.status(201).send({
+        status: true,
+        message: "Stories added to the reading list",
+      });
     })
-  }).catch((err) => {
-    res.status(400).send({
-      status: true,
-      message: 'Error while adding stories'
-    })
-  })
-}) 
+    .catch((err) => {
+      res.status(400).send({
+        status: true,
+        message: "Error while adding stories",
+      });
+    });
+});
 
-router.get('/get-list/:id', async(req, res) => {
-  let userData = await userDB.findOne({_id: mongoose.Types.ObjectId(req.params.id)})
+router.get("/get-list/:id", async (req, res) => {
+  let userData = await userDB.findOne({
+    _id: mongoose.Types.ObjectId(req.params.id),
+  });
 
-  if(!userData){
-    throw 'User data not found'
+  if (!userData) {
+    throw "User data not found";
   }
 
-  let reading_add = []
-  let done = false
-  userData.reading_list.map(async(id, index) => {
-    await storyDB.findOne({_id: mongoose.Types.ObjectId(id)}).then((doc) => {
-      reading_add.push(doc)
-    }).catch((err) => {
-      throw err.toString()
-    })
+  let reading_add = [];
+  let done = false;
+  userData.reading_list.map(async (id, index) => {
+    await storyDB
+      .findOne({ _id: mongoose.Types.ObjectId(id) })
+      .then((doc) => {
+        reading_add.push(doc);
+      })
+      .catch((err) => {
+        throw err.toString();
+      });
 
-    if(reading_add.length == userData.reading_list.length){
-      done = true
-          return res.status(200).send({
-            status: true,
-            data: reading_add
-          })
+    if (reading_add.length == userData.reading_list.length) {
+      done = true;
+      return res.status(200).send({
+        status: true,
+        data: reading_add,
+      });
     }
-
-   
-  })
-
-
-})
+  });
+});
 
 module.exports = router;

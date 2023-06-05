@@ -32,7 +32,9 @@ function App() {
         );
         async function getUser() {
           await axios
-            .get(`http://localhost:8000/api/user/${authUser?.email}`)
+            .get(
+              `https://blogger-medium-api.vercel.app/api/user/${authUser?.email}`
+            )
             .then(async (res) => {
               console.log(res.data);
               if (res.data.status) {
@@ -54,7 +56,11 @@ function App() {
                   photoURL: authUser?.photoURL,
                 };
                 await axios
-                  .post("http://localhost:8000/api/user", body, confHeader)
+                  .post(
+                    "https://blogger-medium-api.vercel.app/api/user",
+                    body,
+                    confHeader
+                  )
                   .then((res) => {
                     console.log(res.data);
                     setUserDetails(res.data?.data);

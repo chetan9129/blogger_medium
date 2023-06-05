@@ -2,7 +2,6 @@
   "name": "medium-clone",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://blogger-medium-api.vercel.app",
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -46,5 +45,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://blogger-medium-api.vercel.app"
 }
