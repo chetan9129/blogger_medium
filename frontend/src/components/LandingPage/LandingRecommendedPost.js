@@ -15,7 +15,7 @@ const LandingRecommendedPost = ({ data, userDetails }) => {
     };
     console.log(body);
     await axios
-      .post(`http://localhost:8000/api/user/list/${id}`, body)
+      .post(`https://blogger-medium-api.vercel.app/api/user/list/${id}`, body)
       .then((res) => {
         console.log("list added successfully");
         navigate("/me/lists");

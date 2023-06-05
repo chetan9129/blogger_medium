@@ -11,7 +11,9 @@ const ListMain = ({ userDetails }) => {
     async function getReadingList() {
       setLoading(true);
       await axios
-        .get(`http://localhost:8000/api/user/get-list/${userDetails?._id}`)
+        .get(
+          `https://blogger-medium-api.vercel.app/api/user/get-list/${userDetails?._id}`
+        )
         .then((res) => {
           setLoading(false);
           console.log(res.data.data);
