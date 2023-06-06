@@ -44,7 +44,7 @@ const Index = ({ userDetails }) => {
         userid: userDetails?._id,
       };
       await axios
-        .post(`http://localhost:8000/api/user/list/${id}`, body)
+        .post(`https://blogger-medium-api.vercel.app/api/user/list/${id}`, body)
         .then((res) => {
           console.log("list added successfully");
           navigate("/me/lists");
