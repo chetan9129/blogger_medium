@@ -13,6 +13,6 @@ connection.on("error", () => {
   console.log("Mongo DB connection Failed");
 });
 
-connection.on("connected", () => {
+connection.on("uconnected", () => {
   console.log("Mongo DB connection Successfull");
 });

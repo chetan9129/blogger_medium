@@ -5,6 +5,8 @@ import ContentEditable from "react-medium-editor";
 import Editor from "react-medium-editor";
 import "medium-editor/dist/css/medium-editor.css";
 import "medium-editor/dist/css/themes/beagle.css";
+// import "./css/index1.css";
+// import "./css/beagle.css";
 import { useSelector } from "react-redux";
 import { selectUserId } from "../../features/userIdSlice";
 import axios from "axios";
@@ -48,125 +50,122 @@ const Index = ({ userDetails }) => {
   };
 
   return (
-    <div className="main_div">
+    <>
       <LandHeader />
-      <div className="pub-button">
-        <button onClick={handleSubmitStories}>Publish</button>
-      </div>
-      <Editor
-        className="editor"
-        tag="pre"
-        text={title}
-        onChange={(text, medium) => {
-          setTitle(text);
-          // console.log(medium);
-        }}
-        options={{
-          toolbar: {
-            buttons: [
-              "bold",
-              "italic",
-              "underline",
-              "anchor",
-              "h1",
-              "h2",
-              "h3",
-              "h4",
-              "h5",
-              "h6",
-              "quote",
-              // "unorderedlist",
-              // "orderedlist",
-              // "subscript",
-              // "superscript",
-              "outdent",
-              "indent",
-              "code",
-              "image",
-            ],
-          },
-          placeholder: {
-            text: "Write  your story.",
-          },
+      <div className="main_div">
+        <Editor
+          className="editor"
+          tag="pre"
+          text={title}
+          onChange={(text, medium) => {
+            setTitle(text);
+            // console.log(medium);
+          }}
+          options={{
+            toolbar: {
+              buttons: [
+                "bold",
+                "italic",
+                "underline",
+                "anchor",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "quote",
+                // "unorderedlist",
+                // "orderedlist",
+                // "subscript",
+                // "superscript",
+                "outdent",
+                "indent",
+                "code",
+                "image",
+              ],
+            },
+            placeholder: {
+              text: "Write  your story.",
+            },
 
-          autoLink: true,
-          anchor: {
-            placeholderText: "Enter reference link",
-            // customClassOption: "btn",
-            // customClassOptionText: "Refernce link",
-          },
-          paste: {
-            cleanPastedHTML: true,
-            cleanAttrs: ["style", "dir"],
-            cleanTags: ["label", "meta"],
-          },
-          anchorPreview: {
-            hideDelay: 300,
-          },
-        }}
-      />
-      <div
-        style={{
-          margin: "10px 0",
-          textAlign: "center",
-        }}
-      >
-        <h2>Description of story</h2>
-      </div>
-      <Editor
-        tag="div"
-        text={desc}
-        onChange={(text) => setDesc(text)}
-        options={{
-          // extensions: {
-          //   embedButton: new EmbedButtonExtension(),
-          // },
-          toolbar: {
-            buttons: [
-              "bold",
-              "italic",
-              "underline",
-              "anchor",
-              "h1",
-              "h2",
-              "h3",
-              "h4",
-              "h5",
-              "h6",
-              "quote",
-              "justified",
-              "unorderedlist",
-              "orderedlist",
-              "subscript",
-              "superscript",
-              "outdent",
-              "indent",
-              "code",
-              "horizontal",
-            ],
-          },
-          placeholder: {
-            text: "Write  your story.",
-          },
+            autoLink: true,
+            anchor: {
+              placeholderText: "Enter reference link",
+              // customClassOption: "btn",
+              // customClassOptionText: "Refernce link",
+            },
+            paste: {
+              cleanPastedHTML: true,
+              cleanAttrs: ["style", "dir"],
+              cleanTags: ["label", "meta"],
+            },
+            anchorPreview: {
+              hideDelay: 300,
+            },
+          }}
+        />
+        <div
+          style={{
+            margin: "10px 0",
+            textAlign: "center",
+          }}
+        >
+          <h2>Description of story</h2>
+        </div>
+        <Editor
+          tag="div"
+          text={desc}
+          onChange={(text) => setDesc(text)}
+          options={{
+            // extensions: {
+            //   embedButton: new EmbedButtonExtension(),
+            // },
+            toolbar: {
+              buttons: [
+                "bold",
+                "italic",
+                "underline",
+                "anchor",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "quote",
+                "justified",
+                "unorderedlist",
+                "orderedlist",
+                "subscript",
+                "superscript",
+                "outdent",
+                "indent",
+                "code",
+                "horizontal",
+              ],
+            },
+            placeholder: {
+              text: "Write  your story.",
+            },
 
-          autoLink: true,
-          anchor: {
-            placeholderText: "Enter reference link",
-            // customClassOption: "btn",
-            // customClassOptionText: "Refernce link",
-          },
-          paste: {
-            cleanPastedHTML: true,
-            cleanAttrs: ["style", "dir"],
-            cleanTags: ["label", "meta"],
-          },
-          anchorPreview: {
-            hideDelay: 300,
-          },
-        }}
-      />
-      <input type="file" />
-      {/* <ContentEditable
+            autoLink: true,
+            anchor: {
+              placeholderText: "Enter reference link",
+              // customClassOption: "btn",
+              // customClassOptionText: "Refernce link",
+            },
+            paste: {
+              cleanPastedHTML: true,
+              cleanAttrs: ["style", "dir"],
+              cleanTags: ["label", "meta"],
+            },
+            anchorPreview: {
+              hideDelay: 300,
+            },
+          }}
+        />
+        {/* <ContentEditable
         html={desc} // innerHTML of the editable div
         style={{
           minHeight: "50vh",
@@ -175,7 +174,11 @@ const Index = ({ userDetails }) => {
         disabled={false} // use true to disable edition
         onChange={(e) => setDesc(e.target.value)} // handle innerHTML change
       /> */}
-    </div>
+        <div className="pub-button">
+          <button onClick={handleSubmitStories}>Publish</button>
+        </div>
+      </div>
+    </>
   );
 };
 
